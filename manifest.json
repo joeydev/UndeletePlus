@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+
+  "name": "Undelete+",
+  "description": "Adds features to Canvas' /undelete page",
+  "version": "0.0.1",
+  "host_permissions": [
+		"*://*/courses/*/undelete",
+		"*://*/courses/*"
+	],
+   "content_scripts": [ 
+	   {
+			"matches": ["*://*/courses/*/undelete"],
+			"js": ["jquery.js", "browser-sniffer.js", "get-cookie.js", "authenticity-token.js", "jquery.ajaxJSON.js", "undelete+.js"],
+			"run_at": "document_end"
+		}, 
+
+		{
+			"matches": ["*://*/courses/*"],
+			"exclude_matches": ["*://*/courses/*/*"],
+			"js": ["add-btn.js"],
+			"run_at": "document_end"
+		} 
+	]
+}
